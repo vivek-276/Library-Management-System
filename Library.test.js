@@ -45,4 +45,11 @@ describe('Library Management System', () => {
         ]);
     });
 
+    test('should throw error when returning a book that was not borrowed', () => {
+        library.addBook('1234567890', 'Book Title', 'Author Name', 2023);
+        expect(() => {
+            library.returnBook('1234567890');
+        }).toThrow('Book was not borrowed.');
+    });
+
 });
