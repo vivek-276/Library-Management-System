@@ -9,16 +9,16 @@ class Library {
         this.books.set(isbn, { title, author, publicationYear, available: true });
     }
 
-    // borrowBook(isbn) {
-    //     const book = this.books.get(isbn);
-    //     if (!book) {
-    //         throw new Error('Book not found.');
-    //     }
-    //     if (!book.available) {
-    //         throw new Error('Book is not available.');
-    //     }
-    //     book.available = false;
-    // }
+    borrowBook(isbn) {
+        const book = this.books.get(isbn);
+        if (!book) {
+            throw new Error('Book not found.');
+        }
+        if (!book.available) {
+            throw new Error('Book is not available.');
+        }
+        book.available = false;
+    }
 
     viewAvailableBooks(){
         return Array.from(this.books.values()).filter(book => book.available);
