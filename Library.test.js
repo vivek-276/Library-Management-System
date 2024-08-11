@@ -12,4 +12,11 @@ describe('Library Management System',()=>{
         const availableBooks = library.viewAvailableBooks();
         expect(availableBooks).toEqual([{title: 'The Alchemist',author: 'Paulo Coelho',publicationYear:1998,available:true}]); 
     });
+
+    test('should borrow a book', () => {
+        library.addBook('1234567890', 'Book Title', 'Author Name', 2023);
+        library.borrowBook('1234567890');
+        const availableBooks = library.viewAvailableBooks();
+        expect(availableBooks).toEqual([]);
+    });
 });
