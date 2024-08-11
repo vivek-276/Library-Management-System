@@ -35,4 +35,14 @@ describe('Library Management System', () => {
         }).toThrow('Book is not available.');
     });
 
+    test('should return a borrowed book', () => {
+        library.addBook('1234567890', 'Book Title', 'Author Name', 2023);
+        library.borrowBook('1234567890');
+        library.returnBook('1234567890');
+        const availableBooks = library.viewAvailableBooks();
+        expect(availableBooks).toEqual([
+            { title: 'Book Title', author: 'Author Name', publicationYear: 2023, available: true }
+        ]);
+    });
+
 });
