@@ -19,6 +19,17 @@ class Library {
         }
         book.available = false;
     }
+    
+    returnBook(isbn) {
+        const book = this.books.get(isbn);
+        if (!book) {
+            throw new Error('Book not found.');
+        }
+        if (book.available) {
+            throw new Error('Book was not borrowed.');
+        }
+        book.available = true;
+    }
 
     viewAvailableBooks(){
         return Array.from(this.books.values()).filter(book => book.available);
