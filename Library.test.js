@@ -13,6 +13,13 @@ describe('Library Management System', () => {
         expect(availableBooks).toEqual([{ title: 'The Alchemist', author: 'Paulo Coelho', publicationYear: 1998, available: true }]);
     });
 
+    test('should throw error when adding a duplicate book', () => {
+        library.addBook('1234567890', 'Book Title', 'Author Name', 2023);
+        expect(() => {
+            library.addBook('1234567890', 'Another Title', 'Another Author', 2024);
+        }).toThrow('Book with this ISBN already exists.');
+    });
+
     test('should borrow a book', () => {
         library.addBook('1234567890', 'Book Title', 'Author Name', 2023);
         library.borrowBook('1234567890');
