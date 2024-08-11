@@ -19,7 +19,7 @@ class Library {
         }
         book.available = false;
     }
-    
+
     returnBook(isbn) {
         const book = this.books.get(isbn);
         if (!book) {
@@ -31,7 +31,7 @@ class Library {
         book.available = true;
     }
 
-    viewAvailableBooks(){
+    viewAvailableBooks() {
         return Array.from(this.books.values()).filter(book => book.available);
     }
 }

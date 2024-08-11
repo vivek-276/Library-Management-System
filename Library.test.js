@@ -52,4 +52,15 @@ describe('Library Management System', () => {
         }).toThrow('Book was not borrowed.');
     });
 
+    test('should throw error when borrowing a non-existent book', () => {
+        expect(() => {
+            library.borrowBook('1234567890');
+        }).toThrow('Book not found.');
+    });
+
+    test('should throw error when returning a non-existent book', () => {
+        expect(() => {
+            library.returnBook('1234567890');
+        }).toThrow('Book not found.');
+    });
 });
